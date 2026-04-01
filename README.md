@@ -242,5 +242,5 @@ For issues or questions:
 
 ## Related
 
-- [Pi Coding Agent](https://github.com/mariozechner/pi-coding-agent) - The underlying framework
+- [Pi Coding Agent](https://github.com/badlogic/pi-mono) - The underlying framework
 - [Exa API](https://exa.ai/) - Web search infrastructure
