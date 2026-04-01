@@ -1,6 +1,7 @@
 // @ts-ignore
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
 import { Type } from "@sinclair/typebox";
+import { Text } from "@mariozechner/pi-tui";
 import Exa from "exa-js";
 import { readFileSync, writeFileSync, mkdirSync, chmodSync } from "node:fs";
 import { join } from "node:path";
@@ -91,6 +92,15 @@ export default function exaExtension(pi: ExtensionAPI) {
       searchType: Type.Optional(Type.Enum({ auto: "auto", fast: "fast", deep: "deep" } as const)),
     }),
 
+    renderCall(args: any, theme: any) {
+      return new Text(theme.fg("dim", `Search: ${args.query}`), 0, 0);
+    },
+
+    renderResult(_result: any, { isPartial }: any, theme: any) {
+      if (isPartial) return new Text(theme.fg("warning", "Searching..."), 0, 0);
+      return new Text(theme.fg("success", "Search complete"), 0, 0);
+    },
+
     async execute(_toolCallId: any, params: any) {
       if (!exaClient) {
         if (!initializeClient()) {
@@ -150,6 +160,15 @@ export default function exaExtension(pi: ExtensionAPI) {
       maxCharacters: Type.Optional(Type.Number({ minimum: 100 })),
     }),
 
+    renderCall(args: any, theme: any) {
+      return new Text(theme.fg("dim", `Fetch: ${args.urls.length} URL(s)`), 0, 0);
+    },
+
+    renderResult(_result: any, { isPartial }: any, theme: any) {
+      if (isPartial) return new Text(theme.fg("warning", "Fetching..."), 0, 0);
+      return new Text(theme.fg("success", "Content fetched"), 0, 0);
+    },
+
     async execute(_toolCallId: any, params: any) {
       if (!exaClient) {
         if (!initializeClient()) {
@@ -197,6 +216,15 @@ export default function exaExtension(pi: ExtensionAPI) {
       numResults: Type.Optional(Type.Number({ minimum: 1, maximum: 10 })),
       excludeSourceDomain: Type.Optional(Type.Boolean()),
     }),
+
+    renderCall(args: any, theme: any) {
+      return new Text(theme.fg("dim", `Similar: ${args.url}`), 0, 0);
+    },
+
+    renderResult(_result: any, { isPartial }: any, theme: any) {
+      if (isPartial) return new Text(theme.fg("warning", "Searching..."), 0, 0);
+      return new Text(theme.fg("success", "Similar pages found"), 0, 0);
+    },
 
     async execute(_toolCallId: any, params: any) {
       if (!exaClient) {

@@ -12,6 +12,7 @@
     "exa-js": "^2.10.2"
   },
   "devDependencies": {
+    "@mariozechner/pi-tui": "^0.64.0",
     "@types/node": "^25.5.0",
     "typescript": "^6.0.2"
   }
