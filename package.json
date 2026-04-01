@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "pi": {
+    "extensions": ["./index.ts"]
+  },
+  "dependencies": {
+    "exa-js": "^2.10.2"
+  }
+}
