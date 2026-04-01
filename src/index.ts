@@ -1,3 +1,4 @@
+// @ts-ignore
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
 import { Type } from "@sinclair/typebox";
 import Exa from "exa-js";
@@ -50,7 +51,7 @@ export default function exaExtension(pi: ExtensionAPI) {
 
   pi.registerCommand("exa-config", {
     description: "Configure Exa API key",
-    handler: async (_args, ctx) => {
+    handler: async (_args: any, ctx: any) => {
       const key = await ctx.ui.input({
         title: "Exa API Key",
         prompt: "Enter your Exa API key:",
@@ -90,7 +91,7 @@ export default function exaExtension(pi: ExtensionAPI) {
       searchType: Type.Optional(Type.Enum({ auto: "auto", fast: "fast", deep: "deep" } as const)),
     }),
 
-    async execute(_toolCallId, params) {
+    async execute(_toolCallId: any, params: any) {
       if (!exaClient) {
         if (!initializeClient()) {
           throw new Error("Exa API key not configured. Use /exa-config command.");
@@ -120,7 +121,7 @@ export default function exaExtension(pi: ExtensionAPI) {
         }
 
         const resultsText = result.results
-          .map((r, i) => {
+          .map((r: any, i: any) => {
             let text = `${i + 1}. **${r.title || "Untitled"}** - ${r.url}`;
             if (r.author) text += ` (${r.author})`;
             if (r.publishedDate) text += ` [${r.publishedDate}]`;
@@ -136,7 +137,7 @@ export default function exaExtension(pi: ExtensionAPI) {
           details: {
             query: params.query,
             resultCount: result.results.length,
-            results: result.results.map((r) => ({
+            results: result.results.map((r: any) => ({
               title: r.title,
               url: r.url,
               author: r.author,
@@ -160,7 +161,7 @@ export default function exaExtension(pi: ExtensionAPI) {
       maxCharacters: Type.Optional(Type.Number({ minimum: 100 })),
     }),
 
-    async execute(_toolCallId, params) {
+    async execute(_toolCallId: any, params: any) {
       if (!exaClient) {
         if (!initializeClient()) {
           throw new Error("Exa API key not configured. Use /exa-config command.");
@@ -173,7 +174,7 @@ export default function exaExtension(pi: ExtensionAPI) {
         });
 
         const resultsText = result.results
-          .map((r, i) => {
+          .map((r: any, i: any) => {
             let text = `${i + 1}. **${r.title || "Untitled"}** - ${r.url}`;
             if (r.text) {
               text += `\n${r.text}`;
@@ -186,7 +187,7 @@ export default function exaExtension(pi: ExtensionAPI) {
           content: [{ type: "text", text: resultsText }],
           details: {
             resultCount: result.results.length,
-            results: result.results.map((r) => ({
+            results: result.results.map((r: any) => ({
               title: r.title,
               url: r.url,
             })),
@@ -208,7 +209,7 @@ export default function exaExtension(pi: ExtensionAPI) {
       excludeSourceDomain: Type.Optional(Type.Boolean()),
     }),
 
-    async execute(_toolCallId, params) {
+    async execute(_toolCallId: any, params: any) {
       if (!exaClient) {
         if (!initializeClient()) {
           throw new Error("Exa API key not configured. Use /exa-config command.");
@@ -222,7 +223,7 @@ export default function exaExtension(pi: ExtensionAPI) {
         });
 
         const resultsText = result.results
-          .map((r, i) => `${i + 1}. **${r.title || "Untitled"}** - ${r.url}`)
+          .map((r: any, i: any) => `${i + 1}. **${r.title || "Untitled"}** - ${r.url}`)
           .join("\n");
 
         return {

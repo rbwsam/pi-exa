@@ -1,9 +1,18 @@
 {
-  "private": true,
   "pi": {
-    "extensions": ["./index.ts"]
+    "extensions": [
+      "./src/index.ts"
+    ]
+  },
+  "scripts": {
+    "check": "tsc --noEmit"
   },
   "dependencies": {
+    "@sinclair/typebox": "^0.34.49",
     "exa-js": "^2.10.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^6.0.2"
   }
 }
