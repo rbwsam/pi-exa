@@ -99,26 +99,15 @@ export default function exaExtension(pi: ExtensionAPI) {
       }
 
       try {
-        let result;
-        if (params.includeText) {
-          result = await exaClient!.searchAndContents(params.query, {
-            numResults: params.numResults || 10,
-            text: { maxCharacters: params.maxCharacters || 2000 },
-            ...(params.highlights && { highlights: { query: params.query } }),
-            includeDomains: params.includeDomains,
-            excludeDomains: params.excludeDomains,
-            category: params.category,
-            type: (params.searchType as "auto" | "fast" | "deep" | undefined) || "auto",
-          });
-        } else {
-          result = await exaClient!.search(params.query, {
-            numResults: params.numResults || 10,
-            includeDomains: params.includeDomains,
-            excludeDomains: params.excludeDomains,
-            category: params.category,
-            type: (params.searchType as "auto" | "fast" | "deep" | undefined) || "auto",
-          });
-        }
+        const result = await exaClient!.search(params.query, {
+          numResults: params.numResults || 10,
+          text: params.includeText ? { maxCharacters: params.maxCharacters || 2000 } : false,
+          ...(params.highlights && { highlights: { query: params.query } }),
+          includeDomains: params.includeDomains,
+          excludeDomains: params.excludeDomains,
+          category: params.category,
+          type: (params.searchType as "auto" | "fast" | "deep" | undefined) || "auto",
+        });
 
         const resultsText = result.results
           .map((r: any, i: any) => {
