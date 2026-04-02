@@ -1,6 +1,6 @@
 # pi-exa
 
-A Pi extension integrating the [Exa API](https://exa.ai/) for web search and content retrieval.
+A minimal Pi extension integrating the [Exa API](https://exa.ai/) for web search and content retrieval.
 
 ## Features
 
