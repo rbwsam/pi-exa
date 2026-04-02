@@ -51,9 +51,13 @@ npm run check  # Type check TypeScript
 ```
 
 **Dependencies:**
-- exa-js
-- @sinclair/typebox
-- typescript
+- `exa-js` - Exa API client
+- `@sinclair/typebox` - Type validation
+- `@mariozechner/pi-tui` - Pi TUI components
+
+**Dev Dependencies:**
+- `typescript` - Type checking
+- `@types/node` - Node.js type definitions
 
 ## Troubleshooting
 
