@@ -107,10 +107,17 @@ The extension respects the following environment variables:
 ```
 pi-exa/
 ├── src/
-│   └── index.ts          # Main extension implementation
-├── package.json          # Dependencies and metadata
-├── tsconfig.json         # TypeScript configuration
-└── README.md             # This file
+│   └── index.ts              # Main extension implementation
+│                             # - Exports Exa extension for Pi
+│                             # - Implements search, fetch, and similar tools
+│                             # - Handles API key management
+│                             # - Provides /exa-config command
+├── package.json              # Dependencies and metadata
+├── package-lock.json         # Locked dependency versions
+├── tsconfig.json             # TypeScript configuration
+├── LICENSE                   # MIT license
+├── .gitignore                # Git ignore rules
+└── README.md                 # This documentation
 ```
 
 ### Dependencies
