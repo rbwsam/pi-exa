@@ -1,4 +1,25 @@
 {
+  "name": "@rbwsam/pi-exa",
+  "version": "1.0.0",
+  "description": "Pi extension integrating the Exa API for web search and content retrieval",
+  "author": "Sam Leavens",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rbwsam/pi-exa"
+  },
+  "keywords": [
+    "pi",
+    "pi-package",
+    "extension",
+    "exa",
+    "web-search",
+    "search"
+  ],
+  "main": "./src/index.ts",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "pi": {
     "extensions": [
       "./src/index.ts"
@@ -7,13 +28,27 @@
   "scripts": {
     "check": "tsc --noEmit"
   },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*",
+    "@sinclair/typebox": "*"
+  },
+  "peerDependenciesMeta": {
+    "@mariozechner/pi-coding-agent": {
+      "optional": false
+    },
+    "@sinclair/typebox": {
+      "optional": false
+    }
+  },
   "dependencies": {
     "@mariozechner/pi-tui": "^0.64.0",
-    "@sinclair/typebox": "^0.34.49",
     "exa-js": "^2.10.2"
   },
   "devDependencies": {
     "@types/node": "^25.5.0",
     "typescript": "^6.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

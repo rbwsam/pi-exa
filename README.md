@@ -11,19 +11,35 @@ A minimal Pi extension integrating the [Exa API](https://exa.ai/) for web search
 
 ## Installation
 
+### From npm (recommended)
+
+```bash
+pi install npm:@rbwsam/pi-exa
+```
+
+Or try without installing:
+
+```bash
+pi -e npm:@rbwsam/pi-exa
+```
+
+### From source
+
 ```bash
 git clone https://github.com/rbwsam/pi-exa ~/.pi/agent/extensions/exa
 cd ~/.pi/agent/extensions/exa
 npm install
 ```
 
-Then configure your API key with:
+### Configure API key
 
-```
+Once installed, run the configuration command:
+
+```bash
 /exa-config
 ```
 
-Your API key will be saved to `~/.pi/config/exa-api-key` with restricted permissions.
+Enter your Exa API key when prompted. Your API key will be saved to `~/.pi/config/exa-api-key` with restricted file permissions (mode 0600).
 
 ## Usage
 
@@ -41,8 +57,6 @@ Pi automatically uses the following tools when appropriate:
 - [Find Similar](https://docs.exa.ai/reference/find-similar-links) - Discover related web pages
 
 No commands needed—just ask naturally.
-
-
 
 ## Development
 
@@ -66,8 +80,6 @@ Run `/exa-config` to set your API key.
 
 **Search failed:**
 Verify your API key is valid and has quota remaining at [exa.ai](https://exa.ai/).
-
-
 
 ## License
 
